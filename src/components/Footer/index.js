@@ -8,6 +8,8 @@ const Footer = () => {
     state: { selectedDay, selectedTime },
   } = useContext(Store);
 
+  const isDisabled = !(selectedDay && selectedTime);
+
   const selectedDateString = (data) =>
     `${data.dayOfWeek}, ${getOrdinalDay(data.day)} ${data.month}`;
 
@@ -25,7 +27,12 @@ const Footer = () => {
           {selectedTime ? <>{selectedTime.time}</> : 'No time selected'}
         </div>
       </div>
-      <Button onClick={() => console.log('click')}>NEXT</Button>
+      <Button
+        onClick={!isDisabled ? () => alert('There is a click on NEXT!') : null}
+        disabled={isDisabled}
+      >
+        NEXT
+      </Button>
     </div>
   );
 };

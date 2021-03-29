@@ -1,6 +1,9 @@
 import moment from 'moment';
 import { MORNING, AFTERNOON, EVENING } from '../constants';
 
+// TODO: THE BELOW TO REFACTOR
+// Use of Moment.js to optimise code
+
 export const getOrdinalDay = (day) => moment.localeData().ordinal(day);
 
 export const getArrayOfTimes = () => {
@@ -88,4 +91,20 @@ export const getArrayOfDays = () => {
   return combinedDays.splice(indexOfCurrentDay, 28);
 };
 
-// The above should be refactored with use of Moment.js to be more compact/optimised
+export const isActiveSlot = (value) => {
+  const d = new Date();
+  const year = d.getFullYear();
+  const month = d.getMonth();
+  const day = d.getDate();
+  const hours = d.getHours();
+  const minutes = d.getMinutes();
+
+  const [hr, min] = String(value).split(':');
+
+  if (isNaN(value)) {
+    const givenTime = new Date(year, month, day, hours, minutes);
+    const timeSlot = new Date(year, month, day, `${hr}`, `${min}`);
+
+    return isNaN(value) ? givenTime < timeSlot : true;
+  }
+};

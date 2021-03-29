@@ -1,10 +1,16 @@
 import React from 'react';
 import Pick from '../Pick';
 
-const Picker = ({ dataKey, data, onClick }) => (
+const Picker = ({ dataKey, data, onClick, type }) => (
   <div style={styles.picker}>
     {data.map((item, idx) => (
-      <Pick key={idx} value={item[dataKey]} data={item} onClick={onClick} />
+      <Pick
+        key={idx}
+        value={item[dataKey]}
+        data={item}
+        onClick={onClick}
+        type={type}
+      />
     ))}
   </div>
 );

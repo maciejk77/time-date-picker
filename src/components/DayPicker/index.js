@@ -30,7 +30,7 @@ const DayPicker = () => {
 
   return (
     <div style={styles.dayPicker}>
-      <Picker data={days} dataKey="day" onClick={handleClick} />
+      <Picker data={days} dataKey="day" onClick={handleClick} type="day" />
     </div>
   );
 };

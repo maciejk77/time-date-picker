@@ -1,8 +1,15 @@
 import React from 'react';
+import { isActiveSlot } from '../../helpers';
 
-const Pick = ({ data, value, onClick }) => {
+const Pick = ({ data, value, onClick, type }) => {
+  // TODO: this logic can be simplified
+  const isDisabled = type !== 'day' && !isActiveSlot(value);
+
   return (
-    <div style={styles.pick} onClick={() => onClick(data)}>
+    <div
+      style={!isDisabled ? styles.pick : styles.inactivePick}
+      onClick={!isDisabled ? () => onClick(data) : null}
+    >
       {value}
     </div>
   );
@@ -18,6 +25,19 @@ const styles = {
     margin: '0 5px 5px 0',
     padding: 10,
     width: 40,
+  },
+
+  inactivePick: {
+    alignItems: 'center',
+    display: 'flex',
+    height: 40,
+    justifyContent: 'center',
+    margin: '0 5px 5px 0',
+    padding: 10,
+    width: 40,
+    // TODO: above repeated here as a quick fix, refactor to something like [...pick, inactivePick] latter being just two items below
+    border: '2px solid lightgray',
+    color: 'lightgray',
   },
 };
 
