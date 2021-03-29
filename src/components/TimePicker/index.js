@@ -6,6 +6,7 @@ import { getArrayOfTimes } from '../../helpers';
 
 const TimePicker = () => {
   const [times, setTimes] = useState([]);
+
   const isLoading = !times.length;
 
   useEffect(() => {
@@ -15,8 +16,8 @@ const TimePicker = () => {
 
   if (isLoading) return <Loader />;
 
-  return times.map(({ label, data }) => (
-    <div style={styles.timePicker}>
+  return times.map(({ label, data }, idx) => (
+    <div style={styles.timePicker} key={idx}>
       <Label>{label}</Label>
       <ItemGroup data={data} />
     </div>
@@ -26,8 +27,7 @@ const TimePicker = () => {
 const styles = {
   timePicker: {
     // border: '1px dotted blue',
-    padding: 10,
-    marginBottom: 3,
+    // marginBottom: 3,
   },
 };
 

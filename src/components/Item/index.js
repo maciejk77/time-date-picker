@@ -6,10 +6,13 @@ const Item = ({ data }) => {
 
 const styles = {
   item: {
+    alignItems: 'center',
     border: '1px solid black',
+    display: 'flex',
+    height: 40,
+    justifyContent: 'center',
     margin: '0 5px 5px 0',
     padding: 10,
-    height: 40,
     width: 40,
   },
 };

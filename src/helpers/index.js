@@ -25,3 +25,56 @@ export const getArrayOfTimes = () => {
     { label: 'Evening', data: eveningSlots },
   ];
 };
+
+export const getArrayOfDays = () => {
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sept',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+
+  const date = new Date();
+  const currentYear = date.getFullYear();
+  const currentMonth = date.getMonth();
+  const currentDay = date.getDate();
+
+  const generateDays = (days, month) => {
+    const daysArray = Array.from(Array(days).keys(), (n) => n + 1);
+    const daysMonthArray = daysArray.reduce(
+      (acc, day) => [...acc, { day, dayOfWeek: 'Mon', month }],
+      []
+    );
+
+    return daysMonthArray;
+  };
+
+  const numberOfDaysInMonth = (year, month) => {
+    return new Date(year, month, 0).getDate();
+  };
+
+  const combinedDays = [
+    ...generateDays(
+      numberOfDaysInMonth(currentYear, currentMonth + 1),
+      months[currentMonth]
+    ),
+    ...generateDays(
+      numberOfDaysInMonth(currentYear, currentMonth + 2),
+      months[currentMonth + 1]
+    ),
+  ];
+
+  const indexOfCurrentDay = combinedDays.findIndex(
+    (obj) => obj.day === currentDay
+  );
+
+  return combinedDays.splice(indexOfCurrentDay, 28);
+};
