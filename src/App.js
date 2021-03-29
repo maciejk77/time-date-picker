@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import Label from './components/Label';
 import TimePicker from './components/TimePicker';
-import { getArrayOfTimes } from './helpers';
 
 const App = () => {
-  const [times, setTimes] = useState();
-  const isLoading = !times;
-
-  // console.log(times);
-
-  useEffect(() => {
-    const times = getArrayOfTimes();
-    setTimes(times);
-  }, []);
-
-  if (isLoading) return <p>Loading...</p>;
-
   return (
     <div style={styles.app}>
-      <div>TIME PICKER</div>
+      <Label>TIME PICKER</Label>
       <TimePicker />
     </div>
   );

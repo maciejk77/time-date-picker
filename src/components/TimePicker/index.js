@@ -1,24 +1,33 @@
-import React from 'react';
-import Item from '../Item';
+import React, { useState, useEffect } from 'react';
+import ItemGroup from '../ItemGroup';
+import Label from '../Label';
+import Loader from '../Loader';
+import { getArrayOfTimes } from '../../helpers';
 
-const TimePicker = ({ times }) => {
-  const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-  return (
+const TimePicker = () => {
+  const [times, setTimes] = useState([]);
+  const isLoading = !times.length;
+
+  useEffect(() => {
+    const times = getArrayOfTimes();
+    setTimes(times);
+  }, []);
+
+  if (isLoading) return <Loader />;
+
+  return times.map(({ label, data }) => (
     <div style={styles.timePicker}>
-      {data.map((day, idx) => (
-        <Item key={idx} day={day} />
-      ))}
+      <Label>{label}</Label>
+      <ItemGroup data={data} />
     </div>
-  );
+  ));
 };
 
 const styles = {
   timePicker: {
-    border: '1px dotted red',
-    display: 'flex',
-    flexWrap: 'wrap',
-    marginTop: 5,
-    padding: 5,
+    // border: '1px dotted blue',
+    padding: 10,
+    marginBottom: 3,
   },
 };
 

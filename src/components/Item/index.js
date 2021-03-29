@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Item = ({ day }) => {
-  return <div style={styles.item}>{day}</div>;
+const Item = ({ data }) => {
+  return <div style={styles.item}>{data}</div>;
 };
 
 const styles = {
