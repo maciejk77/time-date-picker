@@ -1,7 +1,11 @@
 import React from 'react';
 
-const Pick = ({ data }) => {
-  return <div style={styles.pick}>{data}</div>;
+const Pick = ({ data, onClick }) => {
+  return (
+    <div style={styles.pick} onClick={() => onClick(data)}>
+      {data}
+    </div>
+  );
 };
 
 const styles = {

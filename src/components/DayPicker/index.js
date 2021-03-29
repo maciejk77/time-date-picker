@@ -1,16 +1,26 @@
 import React, { useEffect, useContext } from 'react';
 import Picker from '../Picker';
 import Loader from '../Loader';
-import { SET_DAYS } from '../../constants';
+import { SET_DAYS, SET_SELECTED_DAY } from '../../constants';
 import { getArrayOfDays } from '../../helpers';
 import { Store } from '../../Store';
 
 const DayPicker = () => {
-  const { state, dispatch } = useContext(Store);
-  const { days } = state;
+  const {
+    state: { days },
+    dispatch,
+  } = useContext(Store);
 
   const isLoading = !days.length;
   const daysArray = days.map((el) => el.day);
+
+  console.log(days);
+
+  const handleClick = (selectedDay) =>
+    dispatch({
+      type: SET_SELECTED_DAY,
+      payload: selectedDay,
+    });
 
   useEffect(() => {
     dispatch({
@@ -23,7 +33,7 @@ const DayPicker = () => {
 
   return (
     <div style={styles.dayPicker}>
-      <Picker data={daysArray} />
+      <Picker data={daysArray} onClick={handleClick} />
     </div>
   );
 };
