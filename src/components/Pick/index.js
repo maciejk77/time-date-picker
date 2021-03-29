@@ -11,7 +11,7 @@ const Pick = ({ data, value, onClick }) => {
 const styles = {
   pick: {
     alignItems: 'center',
-    border: '1px solid black',
+    border: '2px solid black',
     display: 'flex',
     height: 40,
     justifyContent: 'center',

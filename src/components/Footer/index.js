@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Button from '../Button';
 import { Store } from '../../Store';
-import { setOrdinalIndicator } from '../../helpers/';
+import { getOrdinalDay } from '../../helpers/';
 
 const Footer = () => {
   const {
@@ -9,7 +9,7 @@ const Footer = () => {
   } = useContext(Store);
 
   const selectedDateString = (data) =>
-    `${data.dayOfWeek}, ${setOrdinalIndicator(data.day)} ${data.month}`;
+    `${data.dayOfWeek}, ${getOrdinalDay(data.day)} ${data.month}`;
 
   return (
     <div style={styles.footer}>
@@ -33,7 +33,7 @@ const Footer = () => {
 const styles = {
   footer: {
     alignItems: 'center',
-    border: '1px solid black',
+    border: '2px solid black',
     display: 'flex',
     height: 50,
     justifyContent: 'space-between',
@@ -43,7 +43,7 @@ const styles = {
     width: 375,
   },
   line: {
-    margin: 10,
+    margin: 5,
   },
 };
 

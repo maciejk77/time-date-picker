@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { MORNING, AFTERNOON, EVENING } from '../constants';
 
-export const setOrdinalIndicator = (day) => moment.localeData().ordinal(day);
+export const getOrdinalDay = (day) => moment.localeData().ordinal(day);
 
 export const getArrayOfTimes = () => {
   const quarters = ['00', '15', '30', '45'];
@@ -58,6 +58,7 @@ export const getArrayOfDays = () => {
   const generateDays = (days, month) => {
     const daysArray = Array.from(Array(days).keys(), (n) => n + 1);
     const daysMonthArray = daysArray.reduce(
+      // fixed 'Mon' string for time being
       (acc, day) => [...acc, { day, dayOfWeek: 'Mon', month }],
       []
     );
@@ -86,3 +87,5 @@ export const getArrayOfDays = () => {
 
   return combinedDays.splice(indexOfCurrentDay, 28);
 };
+
+// The above should be refactored with use of Moment.js to be more compact/optimised

@@ -47,14 +47,10 @@ const TimePicker = () => {
       <Picker data={getTimes(EVENING)} dataKey="time" onClick={handleClick} />
     </div>
   );
-  // ));
 };
 
 const styles = {
-  timePicker: {
-    // border: '1px dotted blue',
-    // marginBottom: 3,
-  },
+  timePicker: {},
 };
 
 export default TimePicker;

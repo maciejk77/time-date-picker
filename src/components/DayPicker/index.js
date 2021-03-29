@@ -36,10 +36,7 @@ const DayPicker = () => {
 };
 
 const styles = {
-  dayPicker: {
-    // border: '1px dotted blue',
-    // marginBottom: 3,
-  },
+  dayPicker: {},
 };
 
 export default DayPicker;
