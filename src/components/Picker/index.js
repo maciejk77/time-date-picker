@@ -2,8 +2,8 @@ import React from 'react';
 import Pick from '../Pick';
 
 const Picker = ({ dataKey, data, onClick, type }) => {
-  // TODO: Refactor this logic and below repetition of styles to react-jss, styled-components
-  const orientation = type === 'day' ? styles.pickerDay : styles.pickerTime;
+  const timePickerStyle = { ...styles.picker, ...styles.pickerTime };
+  const orientation = type === 'day' ? styles.picker : timePickerStyle;
 
   return (
     <div style={orientation}>
@@ -21,19 +21,14 @@ const Picker = ({ dataKey, data, onClick, type }) => {
 };
 
 const styles = {
-  pickerDay: {
+  picker: {
     display: 'flex',
     overflow: 'auto',
-    // flexWrap: 'wrap',
     marginTop: 5,
     padding: 5,
   },
   pickerTime: {
-    display: 'flex',
-    // overflow: 'auto',
     flexWrap: 'wrap',
-    marginTop: 5,
-    padding: 5,
   },
 };
 

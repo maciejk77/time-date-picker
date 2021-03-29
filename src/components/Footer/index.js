@@ -44,10 +44,9 @@ const styles = {
     display: 'flex',
     height: 50,
     justifyContent: 'space-between',
-    marginLeft: 5,
     marginTop: 10,
     padding: 5,
-    width: 375,
+    width: 455,
   },
   line: {
     margin: 5,
