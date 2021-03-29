@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Item = ({ data }) => {
-  return <div style={styles.item}>{data}</div>;
+const Pick = ({ data }) => {
+  return <div style={styles.pick}>{data}</div>;
 };
 
 const styles = {
-  item: {
+  pick: {
     alignItems: 'center',
     border: '1px solid black',
     display: 'flex',
@@ -17,4 +17,4 @@ const styles = {
   },
 };
 
-export default Item;
+export default Pick;

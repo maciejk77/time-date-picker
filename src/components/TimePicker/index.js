@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ItemGroup from '../ItemGroup';
+import Picker from '../Picker';
 import Label from '../Label';
 import Loader from '../Loader';
 import { getArrayOfTimes } from '../../helpers';
@@ -19,7 +19,7 @@ const TimePicker = () => {
   return times.map(({ label, data }, idx) => (
     <div style={styles.timePicker} key={idx}>
       <Label>{label}</Label>
-      <ItemGroup data={data} />
+      <Picker data={data} />
     </div>
   ));
 };
