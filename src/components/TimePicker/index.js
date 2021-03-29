@@ -2,7 +2,13 @@ import React, { useEffect, useContext } from 'react';
 import Picker from '../Picker';
 import Label from '../Label';
 import Loader from '../Loader';
-import { SET_TIMES, SET_SELECTED_TIME } from '../../constants';
+import {
+  SET_TIMES,
+  SET_SELECTED_TIME,
+  MORNING,
+  AFTERNOON,
+  EVENING,
+} from '../../constants';
 import { getArrayOfTimes } from '../../helpers';
 import { Store } from '../../Store';
 
@@ -11,6 +17,8 @@ const TimePicker = () => {
     state: { times },
     dispatch,
   } = useContext(Store);
+
+  const getTimes = (timeOfDay) => times.filter((t) => t.label === timeOfDay);
 
   const isLoading = !times.length;
 
@@ -29,12 +37,17 @@ const TimePicker = () => {
 
   if (isLoading) return <Loader />;
 
-  return times.map(({ label, data }, idx) => (
-    <div style={styles.timePicker} key={idx}>
-      <Label>{label}</Label>
-      <Picker data={data} onClick={handleClick} />
+  return (
+    <div style={styles.timePicker}>
+      <Label>Morning</Label>
+      <Picker data={getTimes(MORNING)} dataKey="time" onClick={handleClick} />
+      <Label>Afternoon</Label>
+      <Picker data={getTimes(AFTERNOON)} dataKey="time" onClick={handleClick} />
+      <Label>Evening</Label>
+      <Picker data={getTimes(EVENING)} dataKey="time" onClick={handleClick} />
     </div>
-  ));
+  );
+  // ));
 };
 
 const styles = {

@@ -1,3 +1,8 @@
+import moment from 'moment';
+import { MORNING, AFTERNOON, EVENING } from '../constants';
+
+export const setOrdinalIndicator = (day) => moment.localeData().ordinal(day);
+
 export const getArrayOfTimes = () => {
   const quarters = ['00', '15', '30', '45'];
   const workingHours = Array.from(Array(16).keys(), (n) => n + 6);
@@ -19,10 +24,13 @@ export const getArrayOfTimes = () => {
   const afternoonSlots = timeSlots.slice(24, 44);
   const eveningSlots = timeSlots.slice(44);
 
+  const generateSetOfData = (label, data) =>
+    data.reduce((acc, time) => [...acc, { label, time }], []);
+
   return [
-    { label: 'Morning', data: morningSlots },
-    { label: 'Afternoon', data: afternoonSlots },
-    { label: 'Evening', data: eveningSlots },
+    ...generateSetOfData(MORNING, morningSlots),
+    ...generateSetOfData(AFTERNOON, afternoonSlots),
+    ...generateSetOfData(EVENING, eveningSlots),
   ];
 };
 

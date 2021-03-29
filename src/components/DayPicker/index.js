@@ -12,9 +12,6 @@ const DayPicker = () => {
   } = useContext(Store);
 
   const isLoading = !days.length;
-  const daysArray = days.map((el) => el.day);
-
-  console.log(days);
 
   const handleClick = (selectedDay) =>
     dispatch({
@@ -33,7 +30,7 @@ const DayPicker = () => {
 
   return (
     <div style={styles.dayPicker}>
-      <Picker data={daysArray} onClick={handleClick} />
+      <Picker data={days} dataKey="day" onClick={handleClick} />
     </div>
   );
 };
