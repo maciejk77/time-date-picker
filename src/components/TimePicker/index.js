@@ -50,7 +50,7 @@ const TimePicker = () => {
 };
 
 const styles = {
-  timePicker: {},
+  timePicker: { border: '1px dotted lightgray' },
 };
 
 export default TimePicker;

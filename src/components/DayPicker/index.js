@@ -36,7 +36,7 @@ const DayPicker = () => {
 };
 
 const styles = {
-  dayPicker: {},
+  dayPicker: { border: '1px dotted lightgray', paddingRight: 5 },
 };
 
 export default DayPicker;
