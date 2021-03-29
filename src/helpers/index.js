@@ -61,7 +61,7 @@ export const getArrayOfDays = () => {
   const generateDays = (days, month) => {
     const daysArray = Array.from(Array(days).keys(), (n) => n + 1);
     const daysMonthArray = daysArray.reduce(
-      // fixed 'Mon' string for time being
+      // TODO: fixed 'Mon' string for time being
       (acc, day) => [...acc, { day, dayOfWeek: 'Mon', month }],
       []
     );
