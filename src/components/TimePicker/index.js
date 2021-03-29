@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import Picker from '../Picker';
 import Label from '../Label';
 import Loader from '../Loader';
+import { SET_TIMES } from '../../constants';
 import { getArrayOfTimes } from '../../helpers';
+import { Store } from '../../Store';
 
 const TimePicker = () => {
-  const [times, setTimes] = useState([]);
+  const { state, dispatch } = useContext(Store);
+  const { times } = state;
 
   const isLoading = !times.length;
 
   useEffect(() => {
-    const times = getArrayOfTimes();
-    setTimes(times);
-  }, []);
+    dispatch({
+      type: SET_TIMES,
+      payload: getArrayOfTimes(),
+    });
+  }, [dispatch]);
 
   if (isLoading) return <Loader />;
 

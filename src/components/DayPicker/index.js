@@ -1,19 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import Picker from '../Picker';
-import Label from '../Label';
 import Loader from '../Loader';
+import { SET_DAYS } from '../../constants';
 import { getArrayOfDays } from '../../helpers';
+import { Store } from '../../Store';
 
 const DayPicker = () => {
-  const [days, setDays] = useState([]);
+  const { state, dispatch } = useContext(Store);
+  const { days } = state;
 
   const isLoading = !days.length;
   const daysArray = days.map((el) => el.day);
 
   useEffect(() => {
-    const days = getArrayOfDays();
-    setDays(days);
-  }, []);
+    dispatch({
+      type: SET_DAYS,
+      payload: getArrayOfDays(),
+    });
+  }, [dispatch]);
 
   if (isLoading) return <Loader />;
 
