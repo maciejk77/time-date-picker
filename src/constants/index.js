@@ -10,3 +10,5 @@ export const [MORNING, AFTERNOON, EVENING] = [
   'AFTERNOON',
   'EVENING',
 ];
+
+export const [DAY, TIME] = ['day', 'time'];

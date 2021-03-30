@@ -1,13 +1,10 @@
 import React from 'react';
 import { isActiveSlot } from '../../helpers';
+import { DAY } from '../../constants';
 
-const Pick = ({ data, value, onClick, type, customStyles }) => {
+const Pick = ({ data, value, onClick, type, customStyles, children }) => {
+  const isDisabled = type !== DAY && !isActiveSlot(value);
   const inactivePickStyle = { ...styles.pick, ...styles.inactivePick };
-  // if item is NOT of a day type (time) and time slot is not active
-  // this is a bit to complicated need refactor
-  // isActiveSlot looks into current time and time of the given slot
-  const isDisabled = type !== 'day' && !isActiveSlot(value);
-
   // Styling
   // it needs also a active item on first render for day type, fist day in the array -> current day
   // it needs to change active into selected one on click, both separately for day and time
@@ -20,11 +17,9 @@ const Pick = ({ data, value, onClick, type, customStyles }) => {
           ? { ...inactivePickStyle, ...customStyles }
           : { ...styles.pick, ...customStyles }
       }
-      // callback to dispatch action on Click
-      // no click registered if isDisabled item
       onClick={isDisabled ? null : () => onClick(data)}
     >
-      {value}
+      {children}
     </div>
   );
 };
