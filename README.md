@@ -1,5 +1,12 @@
 # Time/Date Picker app
 
+## Instructions
+
+- `git clone` the app to your local
+- Run `npm i` to install dependencies
+- Run `npm run start` to start app
+- Visit `localhost:3000` to review
+
 ## DONE
 
 - The user must be able to select a date up to four weeks in advance
