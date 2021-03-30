@@ -8,6 +8,7 @@ const Footer = () => {
     state: { selectedDay, selectedTime },
   } = useContext(Store);
 
+  // button is disabled when either of items is not set -> null
   const isDisabled = !(selectedDay && selectedTime);
 
   const selectedDateString = (data) =>
@@ -37,6 +38,7 @@ const Footer = () => {
   );
 };
 
+// styled component needed for less boilerplate and handling style logic
 const styles = {
   footer: {
     alignItems: 'center',

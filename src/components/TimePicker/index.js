@@ -18,6 +18,8 @@ const TimePicker = () => {
     dispatch,
   } = useContext(Store);
 
+  // this filtering could be moved to helper
+  // or by shaping data object into collections and imported as {morning, afternoon .... } sets of data
   const getTimes = (timeOfDay) => times.filter((t) => t.label === timeOfDay);
 
   const isLoading = !times.length;
@@ -49,6 +51,7 @@ const TimePicker = () => {
   );
 };
 
+// styled component needed for less boilerplate and handling style logic
 const styles = {
   timePicker: { border: '1px dotted lightgray' },
 };

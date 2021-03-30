@@ -13,6 +13,7 @@ const Button = ({ children, onClick, disabled = false }) => {
   );
 };
 
+// styled component needed for less boilerplate and handling style logic
 const styles = {
   button: {
     backgroundColor: 'red',

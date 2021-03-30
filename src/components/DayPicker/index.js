@@ -19,6 +19,7 @@ const DayPicker = () => {
       payload: selectedDay,
     });
 
+  // dispatch action to load days array on state on first render
   useEffect(() => {
     dispatch({
       type: SET_DAYS,
@@ -26,8 +27,12 @@ const DayPicker = () => {
     });
   }, [dispatch]);
 
+  // loader if no data yet available
   if (isLoading) return <Loader />;
 
+  // use of Picker which should be flexible enough, iterator to whatever data it received
+  // to create a grid od days, time slots
+  // reusable in mind
   return (
     <div style={styles.dayPicker}>
       <Picker
@@ -35,12 +40,14 @@ const DayPicker = () => {
         dataKey="day"
         onClick={handleClick}
         type="day"
+        // passing a custom style for day item, which will change default square to rounded
         customStyles={{ borderRadius: 15 }}
       />
     </div>
   );
 };
 
+// to be replaced with styled with styled-components
 const styles = {
   dayPicker: { border: '1px dotted lightgray', paddingRight: 5 },
 };
