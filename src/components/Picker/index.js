@@ -1,7 +1,7 @@
 import React from 'react';
 import Pick from '../Pick';
 
-const Picker = ({ dataKey, data, onClick, type }) => {
+const Picker = ({ dataKey, data, onClick, type, customStyles }) => {
   const timePickerStyle = { ...styles.picker, ...styles.pickerTime };
   const orientation = type === 'day' ? styles.picker : timePickerStyle;
 
@@ -14,6 +14,7 @@ const Picker = ({ dataKey, data, onClick, type }) => {
           data={item}
           onClick={onClick}
           type={type}
+          customStyles={customStyles}
         />
       ))}
     </div>

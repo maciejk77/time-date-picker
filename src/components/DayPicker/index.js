@@ -30,7 +30,13 @@ const DayPicker = () => {
 
   return (
     <div style={styles.dayPicker}>
-      <Picker data={days} dataKey="day" onClick={handleClick} type="day" />
+      <Picker
+        data={days}
+        dataKey="day"
+        onClick={handleClick}
+        type="day"
+        customStyles={{ borderRadius: 15 }}
+      />
     </div>
   );
 };

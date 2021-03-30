@@ -1,7 +1,7 @@
 import React from 'react';
 import { isActiveSlot } from '../../helpers';
 
-const Pick = ({ data, value, onClick, type }) => {
+const Pick = ({ data, value, onClick, type, customStyles }) => {
   const inactivePickStyle = { ...styles.pick, ...styles.inactivePick };
   // TODO: this logic can be simplified
   // TODO: Add activePick style e.g. default first day of the array on initial render
@@ -9,7 +9,11 @@ const Pick = ({ data, value, onClick, type }) => {
 
   return (
     <div
-      style={isDisabled ? inactivePickStyle : styles.pick}
+      style={
+        isDisabled
+          ? { ...inactivePickStyle, ...customStyles }
+          : { ...styles.pick, ...customStyles }
+      }
       onClick={isDisabled ? null : () => onClick(data)}
     >
       {value}
