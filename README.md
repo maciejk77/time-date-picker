@@ -21,9 +21,10 @@
 
 ## NOTES
 
+- Add functionality to highlight current day
+- Add a functionality to show all time slots available on days beyound today
 - Helper to be refactored to leverage Moment.js to clean up code, too much data manipulation atm
 - Fix with refactor to Moment.js the currently fixed value for day of the week e.g. "Mon"
 - Check all remaining TODOs e.g. add active Pick styling
-- Introduce `react-jss` or `styled-components` theme to remove boilerplate, handle logic better
 - Add chevrons for Day Picker scroller
 - Add proper styling as per screenshot
