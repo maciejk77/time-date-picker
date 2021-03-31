@@ -1,55 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { isActiveSlot } from '../../helpers';
+import { DAY, TIME } from '../../constants';
+import { Store } from '../../Store';
+import StyledPick from './styles';
 
-const Pick = ({ data, value, onClick, type, customStyles }) => {
-  const inactivePickStyle = { ...styles.pick, ...styles.inactivePick };
-  // if item is NOT of a day type (time) and time slot is not active
-  // this is a bit to complicated need refactor
-  // isActiveSlot looks into current time and time of the given slot
-  const isDisabled = type !== 'day' && !isActiveSlot(value);
+const Pick = ({ data, value, onClick, type, customStyles, children }) => {
+  const { state } = useContext(Store);
 
-  // Styling
-  // it needs also a active item on first render for day type, fist day in the array -> current day
-  // it needs to change active into selected one on click, both separately for day and time
+  // think how to start with selected first day
+  // const firstItem = (state.days && state.days[0] === data) || false;
+
+  // need to simplify that
+  const disabled = type !== DAY && !isActiveSlot(value);
+
+  const selectedItem = (stateItem, key) =>
+    stateItem ? value === stateItem[key] : false;
+
+  const selectedDay = selectedItem(state.selectedDay, DAY);
+  const selectedTime = selectedItem(state.selectedTime, TIME);
+
+  const selected = selectedDay || selectedTime;
 
   return (
-    <div
-      style={
-        // this would be simplified in styled components, passing isDisabled prop
-        isDisabled
-          ? { ...inactivePickStyle, ...customStyles }
-          : { ...styles.pick, ...customStyles }
-      }
-      // callback to dispatch action on Click
-      // no click registered if isDisabled item
-      onClick={isDisabled ? null : () => onClick(data)}
+    <StyledPick
+      style={customStyles}
+      disabled={disabled}
+      // isFirstItem={firstItem}
+      selected={selected}
+      onClick={disabled ? null : () => onClick(data)}
     >
-      {value}
-    </div>
+      {children}
+    </StyledPick>
   );
-};
-
-// styled component needed for less boilerplate and handling style logic
-const styles = {
-  pick: {
-    alignItems: 'center',
-    border: '2px solid black',
-    display: 'flex',
-    height: 40,
-    justifyContent: 'center',
-    margin: '0 5px 5px 0',
-    padding: 10,
-    minWidth: 40,
-  },
-  inactivePick: {
-    border: '2px solid lightgray',
-    color: 'lightgray',
-  },
-  activePick: {
-    backgroundColor: 'black',
-    border: '2px solid black',
-    color: 'white',
-  },
 };
 
 export default Pick;
