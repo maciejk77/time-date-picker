@@ -3,8 +3,9 @@ const theme = {
   colors: {
     base0: 'white',
     base1: 'black',
-    base2: 'gray',
+    base2: 'lightgray',
     base3: 'red',
+    base4: 'gray',
   },
   fonts: {
     base1: 'BioRhyme',

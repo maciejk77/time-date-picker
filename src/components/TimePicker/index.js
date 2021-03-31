@@ -24,11 +24,12 @@ const TimePicker = () => {
 
   const isLoading = !times.length;
 
-  const handleClick = (selectedTime) =>
-    dispatch({
+  const handleClick = (selectedTime) => {
+    return dispatch({
       type: SET_SELECTED_TIME,
       payload: selectedTime,
     });
+  };
 
   useEffect(() => {
     dispatch({
@@ -42,11 +43,26 @@ const TimePicker = () => {
   return (
     <div style={styles.timePicker}>
       <Label>Morning</Label>
-      <Picker data={getTimes(MORNING)} dataKey="time" onClick={handleClick} />
+      <Picker
+        data={getTimes(MORNING)}
+        dataKey="time"
+        onClick={handleClick}
+        type="time"
+      />
       <Label>Afternoon</Label>
-      <Picker data={getTimes(AFTERNOON)} dataKey="time" onClick={handleClick} />
+      <Picker
+        data={getTimes(AFTERNOON)}
+        dataKey="time"
+        onClick={handleClick}
+        type="time"
+      />
       <Label>Evening</Label>
-      <Picker data={getTimes(EVENING)} dataKey="time" onClick={handleClick} />
+      <Picker
+        data={getTimes(EVENING)}
+        dataKey="time"
+        onClick={handleClick}
+        type="time"
+      />
     </div>
   );
 };
