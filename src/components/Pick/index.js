@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { isActiveSlot } from '../../helpers';
 import { DAY } from '../../constants';
 import { Store } from '../../Store';
@@ -8,7 +8,7 @@ const Pick = ({ data, value, onClick, type, customStyles, children }) => {
   const { state } = useContext(Store);
 
   // think how to start with selected first day
-  // const firstItem = state.days && state.days[0] === data;
+  // const firstItem = (state.days && state.days[0] === data) || false;
 
   // need to simplify that
   const disabled = type !== DAY && !isActiveSlot(value);
@@ -28,6 +28,7 @@ const Pick = ({ data, value, onClick, type, customStyles, children }) => {
     <StyledPick
       style={customStyles}
       disabled={disabled}
+      // isFirstItem={firstItem}
       selected={selected}
       onClick={disabled ? null : () => onClick(data)}
     >

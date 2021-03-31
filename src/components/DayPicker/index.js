@@ -19,6 +19,15 @@ const DayPicker = () => {
       payload: selectedDay,
     });
 
+  // dispatch on first render to set first item as selected
+  // needed for styled-component Pick isFirst
+  // useEffect(() => {
+  //   dispatch({
+  //     type: SET_SELECTED_DAY,
+  //     payload: days[0],
+  //   });
+  // }, [dispatch]);
+
   // dispatch action to load days array on state on first render
   useEffect(() => {
     dispatch({

@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 const StyledPick = styled.div`
   align-items: center;
-  background-color: ${({ theme, disabled, selected }) => {
+  background-color: ${({ theme, disabled, selected, isFirstItem }) => {
+    // if (isFirstItem) return theme.color.base2;
     if (disabled) return theme.colors.base2;
     if (selected) return theme.colors.base1;
   }};
