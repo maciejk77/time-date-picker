@@ -21,9 +21,16 @@
 
 ## NOTES
 
-- Helper to be refactored to leverage Moment.js to clean up code, to much data manipulation atm
+- Helper to be refactored to leverage Moment.js to clean up code, too much data manipulation atm
 - Fix with refactor to Moment.js the currently fixed value for day of the week e.g. "Mon"
 - Check all remaining TODOs e.g. add active Pick styling
 - Introduce `react-jss` or `styled-components` theme to remove boilerplate, handle logic better
 - Add chevrons for Day Picker scroller
 - Add proper styling as per screenshot
+
+## Switch to improved-version branch for more up to date code
+
+- General refactor, DRY code
+- Introduced styled-components, moved a lot of styling logic there
+- Improved Picker to receive item as {children} enables different formats i.e. 28 Mon, 10:45
+- Work here continues...
