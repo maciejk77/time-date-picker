@@ -25,3 +25,4 @@
 - Fix with refactor to Moment.js (the currently fixed value for day of the week e.g. "Mon")
 - Add chevrons for Day Picker scroller
 - Add proper styling as per screenshot (to be added)
+- Add tests and Typescript
