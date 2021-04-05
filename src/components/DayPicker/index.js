@@ -7,6 +7,7 @@ import { Store } from '../../Store';
 import StyledDayPicker from './styles';
 
 const DayPicker = () => {
+  // consider adding useCallback hook for dispatch-es below
   const {
     state: { days },
     dispatch,
@@ -15,17 +16,23 @@ const DayPicker = () => {
   const isLoading = !days.length;
 
   const handleClick = (selectedDay) =>
-    dispatch({
-      type: SET_SELECTED_DAY,
-      payload: selectedDay,
-    });
+    dispatch(
+      {
+        type: SET_SELECTED_DAY,
+        payload: selectedDay,
+      },
+      [dispatch]
+    );
 
   useEffect(() => {
     const days = getArrayOfDays();
-    dispatch({
-      type: SET_DAYS,
-      payload: days,
-    });
+    dispatch(
+      {
+        type: SET_DAYS,
+        payload: days,
+      },
+      [dispatch]
+    );
     dispatch({
       type: SET_SELECTED_DAY,
       payload: days[0],
