@@ -44,6 +44,7 @@ export const getArrayOfTimes = () => {
 };
 
 export const getArrayOfDays = () => {
+  // DRY this, see one above
   const months = moment.monthsShort();
 
   const date = new Date();
@@ -92,13 +93,14 @@ export const getArrayOfDays = () => {
 
 // helper to return whether current time passed a given time slot
 // boilerplate could be reduced with Moment.js Before/After etc.
-export const isActiveSlot = (value) => {
+export const isActiveSlot = (value, currentDay) => {
   const d = new Date();
   const year = d.getFullYear();
   const month = d.getMonth();
   const day = d.getDate();
   const hours = d.getHours();
   const minutes = d.getMinutes();
+  let isToday;
 
   const [hr, min] = String(value).split(':');
 
@@ -109,6 +111,14 @@ export const isActiveSlot = (value) => {
     // this logic is fragile, just for time being
     // this logic should only be applied to "time" type of data
     // if value is not a number like day e.g. 28, it will be time "10:15" string
-    return isNaN(value) ? givenTime < timeSlot : true;
+    const isSlotActive = isNaN(value) ? givenTime < timeSlot : true;
+
+    if (currentDay) {
+      const months = moment.monthsShort();
+      isToday =
+        `${currentDay.day}${currentDay.month}` === `${day}${months[month]}`;
+    }
+
+    return isToday ? isSlotActive : !isSlotActive;
   }
 };

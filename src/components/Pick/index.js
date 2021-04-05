@@ -11,7 +11,7 @@ const Pick = ({ data, value, onClick, type, children }) => {
   // const firstItem = (state.days && state.days[0] === data) || false;
 
   // need to simplify that
-  const disabled = type !== DAY && !isActiveSlot(value);
+  const disabled = type === TIME && !isActiveSlot(value, state.selectedDay);
 
   const selectedItem = (stateItem, key) =>
     stateItem ? value === stateItem[key] : false;

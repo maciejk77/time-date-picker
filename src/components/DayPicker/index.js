@@ -25,7 +25,18 @@ const DayPicker = () => {
       type: SET_DAYS,
       payload: getArrayOfDays(),
     });
+    dispatch({
+      type: SET_SELECTED_DAY,
+      payload: getArrayOfDays()[0],
+    });
   }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch({
+  //     type: SET_SELECTED_DAY,
+  //     payload: getArrayOfDays()[0],
+  //   });
+  // }, [dispatch]);
 
   if (isLoading) return <Loader />;
 
