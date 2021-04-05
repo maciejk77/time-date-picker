@@ -22,6 +22,7 @@ const TimePicker = () => {
 
   // this filtering could be moved to helper
   // or by shaping data object into collections and imported as {morning, afternoon .... } sets of data
+
   const getTimes = (timeOfDay) => times.filter((t) => t.label === timeOfDay);
 
   const isLoading = !times.length;

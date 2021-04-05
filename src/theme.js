@@ -17,6 +17,9 @@ const theme = {
     large: '25px',
     xlarge: '65px',
   },
+  width: {
+    base: 468,
+  },
 };
 
 export default theme;

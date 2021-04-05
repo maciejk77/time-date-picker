@@ -5,7 +5,7 @@ const StyledPicker = styled.div`
   display: flex;
   flex-wrap: ${({ type }) => (type === DAY ? 'nowrap' : 'wrap')};
   overflow: auto;
-  width: 468px;
+  width: ${({ theme }) => `${theme.width.base}px`};
 }};
 `;
 

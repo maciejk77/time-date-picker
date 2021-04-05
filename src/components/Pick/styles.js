@@ -21,6 +21,8 @@ const StyledPick = styled.div`
     if (selected) return theme.colors.base0;
   }};
   display: flex;
+  font-family: ${({ theme }) => theme.fonts.base2};
+  font-size: ${({ theme }) => theme.fontSize.small};
   height: 40px;
   justify-content: center;
   margin: 0 5px 5px 0;
