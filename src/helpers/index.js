@@ -44,21 +44,6 @@ export const getArrayOfTimes = () => {
 };
 
 export const getArrayOfDays = () => {
-  // const months = [
-  //   'Jan',
-  //   'Feb',
-  //   'Mar',
-  //   'Apr',
-  //   'May',
-  //   'Jun',
-  //   'Jul',
-  //   'Aug',
-  //   'Sept',
-  //   'Oct',
-  //   'Nov',
-  //   'Dec',
-  // ];
-  // Above was replaced with Moment.js as an example
   const months = moment.monthsShort();
 
   const date = new Date();

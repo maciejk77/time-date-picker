@@ -5,7 +5,7 @@ import DayPicker from './components/DayPicker';
 import TimePicker from './components/TimePicker';
 
 const App = () => (
-  <div style={styles.app}>
+  <div style={{ width: 468 }}>
     <Label>DAY PICKER</Label>
     <DayPicker />
     <Label>TIME PICKER</Label>
@@ -13,11 +13,5 @@ const App = () => (
     <Footer />
   </div>
 );
-
-const styles = {
-  app: {
-    width: 468,
-  },
-};
 
 export default App;

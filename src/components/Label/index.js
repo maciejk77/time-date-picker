@@ -1,10 +1,5 @@
-const Label = ({ children }) => <h3 style={styles.label}>{children}</h3>;
+import StyledLabel from './styles';
 
-// styled component needed here
-const styles = {
-  label: {
-    marginBottom: 10,
-    paddingLeft: 5,
-  },
-};
+const Label = ({ children }) => <StyledLabel>{children}</StyledLabel>;
+
 export default Label;

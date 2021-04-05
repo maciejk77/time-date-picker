@@ -8,9 +8,11 @@ import {
   MORNING,
   AFTERNOON,
   EVENING,
+  TIME,
 } from '../../constants';
 import { getArrayOfTimes } from '../../helpers';
 import { Store } from '../../Store';
+import StyledTimePicker from './styles';
 
 const TimePicker = () => {
   const {
@@ -41,35 +43,15 @@ const TimePicker = () => {
   if (isLoading) return <Loader />;
 
   return (
-    <div style={styles.timePicker}>
+    <StyledTimePicker>
       <Label>Morning</Label>
-      <Picker
-        data={getTimes(MORNING)}
-        dataKey="time"
-        onClick={handleClick}
-        type="time"
-      />
+      <Picker data={getTimes(MORNING)} onClick={handleClick} type={TIME} />
       <Label>Afternoon</Label>
-      <Picker
-        data={getTimes(AFTERNOON)}
-        dataKey="time"
-        onClick={handleClick}
-        type="time"
-      />
+      <Picker data={getTimes(AFTERNOON)} onClick={handleClick} type={TIME} />
       <Label>Evening</Label>
-      <Picker
-        data={getTimes(EVENING)}
-        dataKey="time"
-        onClick={handleClick}
-        type="time"
-      />
-    </div>
+      <Picker data={getTimes(EVENING)} onClick={handleClick} type={TIME} />
+    </StyledTimePicker>
   );
-};
-
-// styled component needed for less boilerplate and handling style logic
-const styles = {
-  timePicker: { border: '1px dotted lightgray' },
 };
 
 export default TimePicker;

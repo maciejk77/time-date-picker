@@ -1,27 +1,24 @@
 import React from 'react';
-import Pick from '../Pick';
 import { DAY } from '../../constants';
+import Pick from '../Pick';
+import StyledPicker from './styles';
 
-const Picker = ({ dataKey, data, onClick, type, customStyles }) => {
-  const timePickerStyle = { ...styles.picker, ...styles.pickerTime };
-
+const Picker = ({ data, onClick, type }) => {
   const isTypeDay = type === DAY;
-  const orientation = isTypeDay ? styles.picker : timePickerStyle;
 
   return (
-    <div style={orientation}>
+    <StyledPicker type={type}>
       {data.map((item, idx) => (
         <Pick
           key={idx}
-          value={item[dataKey]}
+          value={item[type]}
           data={item}
           onClick={onClick}
           type={type}
-          customStyles={customStyles}
         >
           {/* two variants of items being passed here as children e.g. 1, Mon for day, 10:45 for time */}
           {isTypeDay ? (
-            <div style={styles.pickerDay}>
+            <div>
               <div>{item.day}</div>
               <div>{item.dayOfWeek}</div>
             </div>
@@ -32,26 +29,8 @@ const Picker = ({ dataKey, data, onClick, type, customStyles }) => {
           )}
         </Pick>
       ))}
-    </div>
+    </StyledPicker>
   );
-};
-
-// styled component needed for less boilerplate and handling style logic
-const styles = {
-  picker: {
-    display: 'flex',
-    overflow: 'auto',
-    marginTop: 5,
-    padding: 5,
-  },
-  pickerTime: {
-    flexWrap: 'wrap',
-  },
-  pickerDay: {
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'center',
-  },
 };
 
 export default Picker;

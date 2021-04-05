@@ -4,7 +4,7 @@ import { DAY, TIME } from '../../constants';
 import { Store } from '../../Store';
 import StyledPick from './styles';
 
-const Pick = ({ data, value, onClick, type, customStyles, children }) => {
+const Pick = ({ data, value, onClick, type, children }) => {
   const { state } = useContext(Store);
 
   // think how to start with selected first day
@@ -23,11 +23,11 @@ const Pick = ({ data, value, onClick, type, customStyles, children }) => {
 
   return (
     <StyledPick
-      style={customStyles}
       disabled={disabled}
+      onClick={disabled ? null : () => onClick(data)}
       // isFirstItem={firstItem}
       selected={selected}
-      onClick={disabled ? null : () => onClick(data)}
+      type={type}
     >
       {children}
     </StyledPick>

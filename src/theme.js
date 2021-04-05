@@ -8,8 +8,8 @@ const theme = {
     base4: 'gray',
   },
   fonts: {
-    base1: 'BioRhyme',
-    base2: 'Lato',
+    base1: 'Verdana',
+    base2: 'Helvetica',
   },
   fontSize: {
     small: '15px',

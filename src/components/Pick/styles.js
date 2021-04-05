@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DAY } from '../../constants';
 
 const StyledPick = styled.div`
   align-items: center;
@@ -11,6 +12,9 @@ const StyledPick = styled.div`
     if (!disabled && !selected) return `2px solid ${theme.colors.base1}`;
     if (disabled) return `2px solid ${theme.colors.base4}`;
     if (selected) return `2px solid ${theme.colors.base1}`;
+  }};
+  border-radius: ${({ type }) => {
+    if (type === DAY) return `20px`;
   }};
   color: ${({ theme, disabled, selected }) => {
     if (disabled) return theme.colors.base4;
