@@ -22,6 +22,6 @@
 ## NOTES
 
 - Helper to be refactored to leverage Moment.js to clean up code, too much data manipulation atm
-- Fix with refactor to Moment.js the currently fixed value for day of the week e.g. "Mon"
+- Fix with refactor to Moment.js (the currently fixed value for day of the week e.g. "Mon")
 - Add chevrons for Day Picker scroller
-- Add proper styling as per screenshot
+- Add proper styling as per screenshot (to be added)

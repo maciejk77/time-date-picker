@@ -46,6 +46,7 @@ export const getArrayOfTimes = () => {
 export const getArrayOfDays = () => {
   // DRY this, see one above
   const months = moment.monthsShort();
+  const weekdays = moment.weekdaysShort();
 
   const date = new Date();
   const currentYear = date.getFullYear();
