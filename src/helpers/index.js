@@ -119,6 +119,6 @@ export const isActiveSlot = (value, currentDay) => {
         `${currentDay.day}${currentDay.month}` === `${day}${months[month]}`;
     }
 
-    return isToday ? isSlotActive : !isSlotActive;
+    return isToday ? isSlotActive : true;
   }
 };

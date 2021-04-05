@@ -21,22 +21,16 @@ const DayPicker = () => {
     });
 
   useEffect(() => {
+    const days = getArrayOfDays();
     dispatch({
       type: SET_DAYS,
-      payload: getArrayOfDays(),
+      payload: days,
     });
     dispatch({
       type: SET_SELECTED_DAY,
-      payload: getArrayOfDays()[0],
+      payload: days[0],
     });
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   dispatch({
-  //     type: SET_SELECTED_DAY,
-  //     payload: getArrayOfDays()[0],
-  //   });
-  // }, [dispatch]);
 
   if (isLoading) return <Loader />;
 
